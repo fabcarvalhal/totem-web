@@ -18,6 +18,11 @@ app.factory('EventosService',
             this.editar = function($scope) {
                 return $http.post(urlBase+"/adm/evento/editar",$scope.dados);
             }
+
+            this.getAdmEventos = function() {
+                return $http.get(urlBase+"/adm/eventos")
+            }
+
             return this;
         }
     ]
@@ -83,7 +88,7 @@ app.factory('CursosService',
             this.cadastrar = function($scope) {
                 return $http.post(urlBase+"/adm/curso/cadastrar",$scope.dados);
             }
-
+            
             this.getCurso = function(id) {
                 return $http.get(urlBase+"/curso/"+id);
             }

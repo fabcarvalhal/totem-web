@@ -3,7 +3,7 @@ app.controller("eventos", function ($scope, EventosService) {
 
     EventosService.getEventos()
     .then(retorno => {
-        if("error" in retorno.data) {
+        if(retorno.data.hasOwnProperty('error')) {
             console.log("DEU RUIM");
         } else {
             retorno = retorno.data;
@@ -24,7 +24,7 @@ app.controller("eventoInterna", function($scope,$route, EventosService){
     var id = $route.current.params.id;
     EventosService.getEvento(id).
     then(retorno => {
-        if("error" in retorno.data){
+        if(retorno.data.hasOwnProperty('error')){
             console.log(retorno.error);
         } else {
             retorno = retorno.data[0];
@@ -73,7 +73,7 @@ app.controller("inscricao", function($scope,$route,InscricaoService,Instituicoes
     
     $scope.cursos = CursosService.getCursos().
     then(retorno => {
-        if("error" in retorno.data){
+        if(retorno.data.hasOwnProperty('error')){
 
         } else {
             $scope.cursos = retorno.data;
@@ -83,7 +83,7 @@ app.controller("inscricao", function($scope,$route,InscricaoService,Instituicoes
     
     $scope.instituicoes = InstituicoesService.getInstituicoes().
     then(retorno => {
-        if("error" in retorno.data){
+        if(retorno.data.hasOwnProperty('error')){
 
         } else {
             $scope.instituicoes = retorno.data;
@@ -142,7 +142,7 @@ app.controller("admeventoCadastro", function($scope,$route, EventosService, Inst
 
     $scope.instituicoes = InstituicoesService.getInstituicoes().
     then(retorno => {
-        if("error" in retorno.data){
+        if(retorno.data.hasOwnProperty('error')){
 
         } else {
             $scope.instituicoes = retorno.data;
@@ -195,7 +195,8 @@ app.controller("admeventoEditar", function($scope,$route, EventosService, Instit
 
     EventosService.getEvento(evento_id)
     .then(retorno => {
-        if("error" in retorno.data){
+        console.log(retorno);
+        if(retorno.data.hasOwnProperty('error')){
 
         } else {
             let data = retorno.data[0];
@@ -209,7 +210,7 @@ app.controller("admeventoEditar", function($scope,$route, EventosService, Instit
 
             InstituicoesService.getInstituicoes().
             then(retorno => {
-                if("error" in retorno.data){
+                if(retorno.data.hasOwnProperty('error')){
         
                 } else {
                     $scope.instituicoes = retorno.data;
@@ -275,7 +276,7 @@ app.controller("admcursoCadastrar", function($scope,$route, CursosService, Insti
 
     $scope.instituicoes = InstituicoesService.getInstituicoes().
     then(retorno => {
-        if("error" in retorno.data){
+        if(retorno.data.hasOwnProperty('error')){
 
         } else {
             $scope.instituicoes = retorno.data;
@@ -326,7 +327,7 @@ app.controller("admcursoEditar", function($scope,$route, CursosService, Institui
 
     CursosService.getCurso(cursoId)
     .then(retorno => {
-        if("error" in retorno.data){
+        if(retorno.data.hasOwnProperty('error')){
 
         } else {
             let data = retorno.data;
@@ -339,7 +340,7 @@ app.controller("admcursoEditar", function($scope,$route, CursosService, Institui
 
             InstituicoesService.getInstituicoes().
             then(retorno => {
-                if("error" in retorno.data){
+                if(retorno.data.hasOwnProperty('error')){
         
                 } else {
                     $scope.instituicoes = retorno.data;
@@ -433,7 +434,7 @@ app.controller("adminstituicaoEditar", function($scope,$route, InstituicoesServi
 
     InstituicoesService.getInstituicao(instituicaoId)
     .then(retorno => {
-        if("error" in retorno.data){
+        if(retorno.data.hasOwnProperty('error')){
 
         } else {
             let data = retorno.data;
@@ -480,7 +481,7 @@ app.controller("credenciamento", function($scope,$route, EventosService, Credenc
 
     EventosService.getEventos()
     .then(retorno => {
-        if("error" in retorno.data) {
+        if(retorno.data.hasOwnProperty('error')) {
         } else {
             retorno = retorno.data;
             $scope.eventos = retorno.map(function(item){
@@ -558,3 +559,43 @@ app.controller("credenciamento", function($scope,$route, EventosService, Credenc
         });
     }
 })
+
+
+app.controller("admInstituicoes", function ($scope, InstituicoesService) {
+
+    $scope.instituicoes = InstituicoesService.getInstituicoes().
+    then(retorno => {
+        if(retorno.data.hasOwnProperty('error')){
+
+        } else {
+            $scope.instituicoes = retorno.data;
+        }
+    });
+    
+});
+
+app.controller("admEventos", function ($scope, EventosService) {
+
+    $scope.eventos = EventosService.getAdmEventos().
+    then(retorno => {
+        if(retorno.data.hasOwnProperty('error')){
+
+        } else {
+            $scope.eventos = retorno.data;
+        }
+    });
+    
+});
+
+app.controller("admCursos", function ($scope, CursosService) {
+
+    $scope.cursos = CursosService.getCursos().
+    then(retorno => {
+        if(retorno.data.hasOwnProperty('error')){
+
+        } else {
+            $scope.cursos = retorno.data;
+        }
+    });
+    
+});

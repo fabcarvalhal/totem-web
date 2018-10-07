@@ -32,7 +32,7 @@ app.config(function($routeProvider) {
     .when("/adm/instituicao/:id/editar", {
         templateUrl : "adm/editarInstituicao.html"
     })
-    .when("/adm/institut", {
+    .when("/adm/instituicoes", {
         templateUrl : "adm/listarInstitut.html"
     })
     .when("/credenciamento", {
