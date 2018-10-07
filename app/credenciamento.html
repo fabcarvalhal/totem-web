@@ -3,7 +3,7 @@
     <article class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
             <div class="row" style="padding:10px;">
                 <div class="col-sm-12">
-                    <form class="form-horizontal" name="inscricao_form" ng-submit="submitForm()">
+                    <form class="form-horizontal" name="inscricao_form">
                         <fieldset>
                             
                             <!-- Form Name -->
@@ -49,9 +49,12 @@
                             </div>
 
                             <!-- Button (Double) -->
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <button ng-click="Submit" id="" name="button1id" class="btn btn-success btnSalvar">Enviar</button>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <button ng-click="doCheckin()" id="" name="button1id" class="btn btn-success btnSalvar">Checkin</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button ng-click="doCheckout()" id="" name="button1id" class="btn btn-danger btnSalvar">Checkout</button>
                                 </div>
                             </div>
                             

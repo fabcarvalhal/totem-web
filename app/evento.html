@@ -12,12 +12,12 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <i class="fa fa-map-marker-alt"></i>
-                        <span class="location-event"> Ruy Barbosa </span>
+                        <span class="location-event"> {{ evento.faculdade }} </span>
                     </div>
                     <div class="col-sm-6 ">
                         <div class="float-right">
                             <i class="fa fa-calendar"></i> 
-                            <span class="datetime-event"> {{ evento.inicio | date: "dd/MM/yyyy HH:mm" }} às {{ evento.fim | date: "HH:mm" }} </span>
+                            <span class="datetime-event"> {{ evento.inicio | date: "dd/MM/yyyy HH:mm" }} à {{ evento.fim | date: "dd/MM/yyyy HH:mm" }} </span>
                         </div>
                     </div>
                 </div>
@@ -25,10 +25,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <p class="card-body">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel laoreet sem. Phasellus non neque consectetur, tincidunt magna quis, finibus lorem. Donec tincidunt semper nisl eget ultricies. Vivamus pellentesque purus eget arcu faucibus efficitur. Quisque vestibulum, odio ac rhoncus consectetur, felis justo imperdiet nisi, at tempus quam massa quis nisi. Proin convallis posuere velit ac commodo. Nam consequat tincidunt augue pellentesque condimentum. Morbi ut elit rhoncus, vestibulum massa eget, egestas sapien. Suspendisse euismod et nunc vitae gravida.
-                            
-                            Pellentesque vel dignissim arcu, nec condimentum diam. Suspendisse consequat vitae urna ornare ultrices. Donec interdum metus eu vestibulum consequat. Morbi velit lorem, consectetur id mauris sed, semper scelerisque risus. Aliquam vel venenatis arcu. Fusce dignissim a ante at tincidunt. Praesent erat mauris, pretium et sem at, interdum feugiat enim. Ut vel laoreet ligula, quis tincidunt nibh. Morbi tempor ullamcorper lacus vitae suscipit. Mauris ex sem, varius porttitor semper vel, commodo ut risus. Mauris euismod ligula nibh. Quisque dictum commodo purus ac placerat. Vivamus lacus ipsum, rhoncus vel pulvinar sit amet, cursus sit amet orci.
-                            
+                            {{ evento.descricao }}
                         </p>
                     </div>
                 </div>
