@@ -1,4 +1,5 @@
 var app = angular.module("totem-web", ["ngRoute"]);
+app.constant("APIURL", "http://localhost/totem-api");
 
 app.config(function($routeProvider) {
     $routeProvider

@@ -31,7 +31,9 @@ app.controller("eventoInterna", function($scope,$route, EventosService){
             $scope.evento = {
                 nome: retorno.nome,
                 inicio: new Date(retorno.inicio).toISOString(),
-                fim: new Date(retorno.fim).toISOString()
+                fim: new Date(retorno.fim).toISOString(),
+                faculdade: retorno.nome_faculdade,
+                descricao: retorno.descricao
             };
 
         }
@@ -137,7 +139,8 @@ app.controller("admeventoCadastro", function($scope,$route, EventosService, Inst
         nome: '',
         faculdade: '',
         inicio: '',
-        fim: ''
+        fim: '',
+        descricao: ''
     };
 
     $scope.instituicoes = InstituicoesService.getInstituicoes().
@@ -190,12 +193,13 @@ app.controller("admeventoEditar", function($scope,$route, EventosService, Instit
         faculdade: '',
         inicio: '',
         fim: '',
+        descricao: '',
         id: evento_id
     };
 
+
     EventosService.getEvento(evento_id)
     .then(retorno => {
-        console.log(retorno);
         if(retorno.data.hasOwnProperty('error')){
 
         } else {
@@ -205,6 +209,7 @@ app.controller("admeventoEditar", function($scope,$route, EventosService, Instit
                 faculdade: data.faculdade.toString(),
                 inicio: new Date(data.inicio),
                 fim: new Date(data.fim),
+                descricao: data.descricao,
                 id: evento_id
             };
 
@@ -248,11 +253,6 @@ app.controller("admeventoEditar", function($scope,$route, EventosService, Instit
            } else {
                $scope.responseClass = "success";
                $scope.editResposta = retorno.data.message;
-               $scope.dados = {};
-               $scope.selectedFacul = {};
-               $scope.inscricao_form.$setPristine();
-               $scope.inscricao_form.$setValidity();
-               $scope.inscricao_form.$setUntouched();
            }
        })
    }
@@ -376,11 +376,6 @@ app.controller("admcursoEditar", function($scope,$route, CursosService, Institui
            } else {
                $scope.responseClass = "success";
                $scope.editResposta = retorno.data.message;
-               $scope.dados = {};
-               $scope.selectedFacul = {};
-               $scope.inscricao_form.$setPristine();
-               $scope.inscricao_form.$setValidity();
-               $scope.inscricao_form.$setUntouched();
            }
        })
    }
@@ -451,15 +446,6 @@ app.controller("adminstituicaoEditar", function($scope,$route, InstituicoesServi
            } else {
                $scope.responseClass = "success";
                $scope.editResposta = retorno.data.message;
-               $scope.dados = {
-                    endereco: '',
-                    nome_faculdade: '',
-                    id: instituicaoId
-               };
-               $scope.selectedFacul = {};
-               $scope.inscricao_form.$setPristine();
-               $scope.inscricao_form.$setValidity();
-               $scope.inscricao_form.$setUntouched();
            }
        })
    }
@@ -479,7 +465,7 @@ app.controller("credenciamento", function($scope,$route, EventosService, Credenc
         id_evento: ''
     };
 
-    EventosService.getEventos()
+    EventosService.getOngoingEvents()
     .then(retorno => {
         if(retorno.data.hasOwnProperty('error')) {
         } else {
@@ -503,7 +489,7 @@ app.controller("credenciamento", function($scope,$route, EventosService, Credenc
         }
     }
 
-    function checkout() {
+    $scope.doCheckout = function checkout() {
         if ($scope.selectedEvento.id == undefined){
             $scope.responseClass = "danger";
             $scope.credenciamentoResponse = "Por favor informe o evento";
@@ -531,7 +517,7 @@ app.controller("credenciamento", function($scope,$route, EventosService, Credenc
         });
     }
 
-    function checkin(){
+    $scope.doCheckin = function checkin(){
         if ($scope.selectedEvento.id == undefined){
             $scope.responseClass = "danger";
             $scope.credenciamentoResponse = "Por favor informe o evento";
