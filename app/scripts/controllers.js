@@ -459,7 +459,6 @@ app.controller("credenciamento", function($scope,$route, EventosService, Credenc
     $scope.selectedEvento = '';
     $scope.responseClass = '';
     $scope.credenciamentoResponse = '';
-    $scope.actionOption = '';
     $scope.dados = {
         cpf: '',
         id_evento: ''
@@ -477,17 +476,6 @@ app.controller("credenciamento", function($scope,$route, EventosService, Credenc
             });
         }
     });
-
-    $scope.submitForm = function() {
-        if ($scope.actionOption == 'checkin') {
-            checkin();
-        } else if ($scope.actionOption == 'checkout') {
-            checkout();
-        } else {
-            $scope.responseClass = 'danger';
-            $scope.credenciamentoResponse = "Selecione checkin ou checkout.";
-        }
-    }
 
     $scope.doCheckout = function checkout() {
         if ($scope.selectedEvento.id == undefined){
