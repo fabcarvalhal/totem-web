@@ -1,4 +1,4 @@
-var app = angular.module("totem-web", ["ngRoute"]);
+var app = angular.module("totem-web", ["ngRoute","angularUtils.directives.dirPagination"]);
 app.constant("APIURL", "https://www.nexusjr.com/totem-api");
 
 app.config(function($routeProvider) {
@@ -15,7 +15,7 @@ app.config(function($routeProvider) {
     .when("/adm/evento/:id/editar", {
         templateUrl : "adm/editarEvento.html"
     })
-    .when("/adm/eventos", {
+    .when("/adm/eventos", {     
         templateUrl : "adm/listarEventos.html"
     })
     .when("/adm/curso/cadastrar", {
