@@ -6,7 +6,7 @@
     <form action="" class="search-form">
                 <div class="form-group has-feedback">
             		<label for="search" class="sr-only">Search</label>
-            		<input type="text" disabled class="form-control" name="search" id="search" placeholder="Pesquisar [Desabilitado Temporariamente]">
+            		<input type="text"  class="form-control" name="search" id="search" placeholder="Pesquisar">
               		<span class="glyphicon glyphicon-search form-control-feedback"></span>
             	</div>
     </form>
@@ -24,7 +24,7 @@
     </tr>
   </thead>
   <tbody >
-    <tr ng-repeat="instituicao in instituicoes">
+    <tr ng-repeat="instituicao in instituicoes | filter:search">
       <td class="text-center">{{ instituicao.nome_faculdade }}</td>
       <td class="text-center">{{ instituicao.endereco }}</td>
       <td class="text-center"><a href="./#!/adm/instituicao/{{ instituicao.id }}/editar" class="btn btn-primary fa fa-pen"></a></td>

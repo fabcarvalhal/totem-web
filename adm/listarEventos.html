@@ -6,7 +6,7 @@
     <form action="" class="search-form">
                 <div class="form-group has-feedback">
             		<label for="search" class="sr-only">Search</label>
-            		<input type="text" disabled class="form-control" name="search" id="search" placeholder="Pesquisar [Desabilitado Temporariamente]">
+            		<input type="text"  class="form-control" name="search" id="search" placeholder="Pesquisar">
               		<span class="glyphicon glyphicon-search form-control-feedback"></span>
             	</div>
     </form>
@@ -26,7 +26,7 @@
     </tr>
   </thead>
   <tbody >
-    <tr ng-repeat="evento in eventos">
+    <tr ng-repeat="evento in eventos | filter:search">
       <td class="text-center">{{ evento.nome }}</td>
       <td class="text-center">{{ evento.faculdade }}</td>
       <td class="text-center">{{ evento.inicio  | date: "dd/MM/yyyy HH:mm" }}</td>

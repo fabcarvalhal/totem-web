@@ -6,7 +6,7 @@
     <form action="" class="search-form">
                 <div class="form-group has-feedback">
             		<label for="search" class="sr-only">Search</label>
-            		<input type="text" disabled class="form-control" name="search" id="search" placeholder="Pesquisar [Desabilitado Temporariamente]">
+            		<input type="text"  class="form-control" name="search" id="search" placeholder="Pesquisar">
               		<span class="glyphicon glyphicon-search form-control-feedback"></span>
             	</div>
     </form>
@@ -25,7 +25,7 @@
     </tr>
   </thead>
   <tbody >
-    <tr ng-repeat="curso in cursos">
+    <tr ng-repeat="curso in cursos | filter:search" >
       <td class="text-center">{{ curso.nome }}</td>
       <td class="text-center">{{ curso.area }}</td>
       <td class="text-center">{{ curso.nome_faculdade }}</td>
